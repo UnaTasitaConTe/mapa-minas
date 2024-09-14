@@ -1,0 +1,106 @@
+/* Estilos para la clase .animated-popup */
+.animated-popup {
+  transform: scale(0.5) rotateX(-60deg); /* Inicia con un tamaño reducido y una rotación en el eje X */
+  transform-origin: bottom; /* Establece el origen de la transformación en la parte inferior */
+  opacity: 0; /* Inicialmente invisible */
+  animation: popup3D 0.5s forwards; /* Aplica la animación popup3D durante 0.5s, avanzando hasta el final */
+}
+
+/* Definición de la animación @keyframes para la clase .animated-popup */
+@keyframes popup3D {
+  to {
+    transform: scale(1) rotateX(0deg); /* Termina con tamaño normal y sin rotación */
+    opacity: 1; /* Se vuelve completamente visible */
+  }
+}
+
+/* Estilos generales para el cuerpo del documento */
+body {
+  margin: 0; /* Elimina los márgenes predeterminados */
+  padding: 0; /* Elimina el padding predeterminado */
+}
+
+/* Estilos para el contenedor del mapa */
+#map {
+  position: absolute; /* Coloca el mapa en una posición absoluta */
+  top: 0;
+  bottom: 0;
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+}
+
+/* Estilos para el marcador de "patios" */
+#patios {
+  background-image: url("./public/assets/images/Minas/PATIOS.webp"); /* Imagen de fondo para el marcador */
+  background-size: cover; /* La imagen de fondo cubre completamente el contenedor */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Redondea las esquinas para que parezca un círculo */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el marcador */
+}
+
+/* Estilos para el marcador de "minas" */
+#minas {
+  background-image: url("./public/assets/images/mrcotte/mrcotte.webp"); /* Imagen de fondo para el marcador */
+  background-size: cover; /* La imagen de fondo cubre completamente el contenedor */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Redondea las esquinas para que parezca un círculo */
+  background-color: antiquewhite; /* Color de fondo adicional */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el marcador */
+}
+
+/* Estilos para el marcador de "oficina" */
+#oficina {
+  background-image: url("./public/assets/images/logo/image.png"); /* Imagen de fondo para el marcador */
+  background-size: cover; /* La imagen de fondo cubre completamente el contenedor */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Redondea las esquinas para que parezca un círculo */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el marcador */
+}
+
+/* Estilos para el popup de Mapbox */
+.mapboxgl-popup {
+  max-width: 500px; /* Establece un ancho máximo para el popup */
+}
+
+/* Estilos para el marcador personalizado */
+.custom-marker {
+  position: relative; /* Posiciona el marcador relativo a su contenedor */
+}
+
+/* Estilos para el nombre flotante que aparece sobre los marcadores */
+.floating-name {
+  position: absolute; /* Posiciona el nombre de forma absoluta respecto al marcador */
+  top: -20px; /* Posiciona el nombre ligeramente por encima del marcador */
+  left: 50%; /* Centra horizontalmente el nombre respecto al marcador */
+  border-radius: 20%; /* Redondea ligeramente las esquinas del contenedor del nombre */
+  transform: translateX(-50%); /* Asegura que el nombre esté centrado */
+  background-color: transparent; /* Fondo transparente */
+  padding: 2px 5px; /* Añade un pequeño padding alrededor del texto */
+  font-size: 12px; /* Tamaño de fuente pequeño */
+  white-space: nowrap; /* Mantiene el texto en una sola línea */
+  color: black; /* Color del texto */
+  background-color: aliceblue; /* Color de fondo del nombre */
+}
+
+/* Estilos para las imágenes dentro de las tarjetas */
+.card-img {
+  width: 220px; /* Ancho de la imagen */
+  max-height: 220px; /* Altura máxima de la imagen */
+  object-fit: cover; /* Mantiene la proporción de la imagen, recortando si es necesario */
+  border-radius: 2%; /* Redondea ligeramente las esquinas de la imagen */
+}
+
+/* Estilos para el cuerpo de las tarjetas */
+.card-body {
+  width: 220px; /* Ancho del cuerpo de la tarjeta */
+  padding: 0; /* Sin padding dentro del cuerpo */
+  margin: 0; /* Sin margen alrededor del cuerpo */
+}
+
+/* Estilos para el título y el texto de las tarjetas */
+.card-title, .card-text {
+  padding: 0; /* Sin padding dentro del texto */
+  margin: 0; /* Sin margen alrededor del texto */
+}

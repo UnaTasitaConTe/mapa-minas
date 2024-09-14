@@ -1,0 +1,4 @@
+/node_modules
+node_modules
+/Infrastructure/env.js
+/public/assets/**/*.webp
