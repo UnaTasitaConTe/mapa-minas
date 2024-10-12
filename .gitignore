@@ -1,3 +1,5 @@
 .vs
 /.vs
-data
+data/
+./data
+/data
