@@ -1,0 +1,49 @@
+services:
+  api:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+      args:
+        mongo_url: mongodb://root:example@mongo:27017
+        mongo_name: pointsmla
+    restart: always
+    ports:
+      - "3000:5001"
+    depends_on:
+      - mongo
+    environment:
+      MONGO_URL: mongodb://root:example@mongo:27017
+      MONGO_NAME: pointsmla
+  app:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+      args:
+        URL_CONNECTION: "http://192.168.1.105:3000/api"
+        MAPBOX: "pk.eyJ1IjoidW5hdGFzaXRhY29udGUiLCJhIjoiY20wZHkzYWlmMDBvejJxb3FoNDJkaHA1eiJ9.ZxzL-iCqgLnzqVaO0DLyMA"
+    restart: always
+    ports:
+      - "3001:80"
+    depends_on:
+      - api
+    environment:
+      URL_CONNECTION: "http://192.168.1.105:3000/api"
+      MAPBOX: "pk.eyJ1IjoidW5hdGFzaXRhY29udGUiLCJhIjoiY20wZHkzYWlmMDBvejJxb3FoNDJkaHA1eiJ9.ZxzL-iCqgLnzqVaO0DLyMA"
+  mongo:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - ./data/db:/data/db
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH: false
